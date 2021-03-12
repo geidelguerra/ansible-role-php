@@ -1,0 +1,12 @@
+---
+- name: Converge
+  hosts: all
+  tasks:
+    - name: "Include ansible-role-php"
+      include_role:
+        name: "ansible-role-php"
+    - name: "Include ansible-role-php with FPM enabled"
+      include_role:
+        name: "ansible-role-php"
+      vars:
+        php_fpm: yes

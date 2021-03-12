@@ -1,0 +1,24 @@
+---
+# tasks file for ansible-role-php
+- name: Install dirmngr
+  ansible.builtin.apt:
+    name: dirmngr
+    state: present
+    update_cache: yes
+
+- name: Add PHP PPA repository
+  ansible.builtin.apt_repository:
+    repo: ppa:ondrej/php
+    state: present
+    codename: focal
+
+- name: Install PHP
+  ansible.builtin.apt:
+    name: "php{{ php_version }}"
+    state: present
+
+- name: Install PHP FPM
+  ansible.builtin.apt:
+    name: "php{{ php_version }}-fpm"
+    state: present
+  when: php_fpm

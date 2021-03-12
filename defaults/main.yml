@@ -1,0 +1,4 @@
+---
+# defaults file for ansible-role-php
+php_version: 7.4
+php_fpm: no
